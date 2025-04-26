@@ -1,0 +1,26 @@
+<div th:fragment="sellerProducts">
+    <div class="container">
+        <div th:each="tempItem: ${items}" class="item-info">
+            <div class="image-container"><img class="item-image" th:src="${tempItem.imageURL}"></div>
+            <div>
+                <div class="item-details">
+                    <span th:text="'Name - ' + ${tempItem.itemName}"></span>
+                    <span th:text="'Quantity - ' + ${tempItem.quantity}"></span>
+                    <span th:text="'Type - ' + ${tempItem.type}"></span>
+                    <span th:text="'Price - ' + ${tempItem.price}"></span>
+                </div>
+                <div>
+                    <!--
+                    <form action="#" th:action="@{/updateItem(itemId=${tempItem.id})}" method="get">
+                        <button type="submit">Update item</button>
+                    </form>
+
+                    <button>Update item</button> -->
+                    <a th:href="@{/seller/updateItem(itemId=${tempItem.id})}">Update item</a>
+                    <a th:href="@{/seller/deleteItem(itemId=${tempItem.id})}"
+                       onclick="if (!(confirm('Are your sure you want to delete this item?'))) return false">Delete item</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

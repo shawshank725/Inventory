@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Register</title>
+        <link type="text/css" th:href="@{/css/login_page.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+    </head>
+    <body>
+        <div class="form-container-container">
+            <div class="form-container">
+                <div class="sign-in-heading">Register</div>
+                <hr>
+                <form action="#" th:action="@{/register/processRegistrationForm}" method="post" th:object="${newUser}">
+                    <div class="table-container">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><span th:if="${#fields.hasErrors('username')}"
+                                              th:errors="*{username}"
+                                              class="error"></span>
+                                        <input type="text" th:field="*{username}" placeholder="User Name"></td>
+                                </tr>
+    
+                                <tr>
+                                    <td><span th:if="${#fields.hasErrors('firstname')}"
+                                              th:errors="*{firstname}"
+                                              class="error"></span>
+                                        <input type="text" th:field="*{firstname}" placeholder="First Name">
+                                    </td>
+
+                                </tr>
+    
+                                <tr>
+                                    <td><span th:if="${#fields.hasErrors('lastname')}"
+                                              th:errors="*{lastname}"
+                                              class="error"></span>
+                                        <input type="text" th:field="*{lastname}" placeholder="Last Name"></td>
+                                </tr>
+    
+                                <tr>
+                                    <td><span th:if="${#fields.hasErrors('email')}"
+                                              th:errors="*{email}"
+                                              class="error"></span>
+                                        <input type="text" th:field="*{email}" placeholder="Email">
+                                    </td>
+                                </tr>
+    
+                                <tr>
+                                    <td><span th:if="${#fields.hasErrors('password')}"
+                                              th:errors="*{password}"
+                                              class="error"></span>
+                                        <input type="password" th:field="*{password}" placeholder="Password">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div><button type="submit">Register!</button></div>
+                        <div>
+                            <a class="register-link" th:href="@{/showMyLoginPage}">
+                                <div class="register-link-container">Go back to login form</div>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

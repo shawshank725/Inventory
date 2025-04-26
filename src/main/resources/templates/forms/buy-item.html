@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/table-styling.css}" rel="stylesheet" >
+    </head>
+    <body>
+
+        <div th:replace="fragments/navigation-bar :: navigation-bar"></div>
+
+        <div>
+            <p  class="heading">Add some new item</p>
+            <form action="#" th:action="@{/buyer/finalizeBuyingItem}" th:object="${orderEntity}" method="post" enctype="multipart/form-data">
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><input type="hidden" name="itemId" th:value="${itemId}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td><input type="text" th:field="${orderEntity.address}" placeholder="Address"></td>
+                            <td>
+                                <span th:if="${#fields.hasErrors('address')}"
+                                      th:errors="*{address}"
+                                      class="error"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Payment Mode</td>
+                            <td>
+                                <select th:field="${orderEntity.payment_mode}">
+                                    <option th:each="tempMode : ${payment_modes}" th:value="${tempMode}" th:text="${tempMode}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Order now!</button>
+            </form>
+        </div>
+    </body>
+</html>

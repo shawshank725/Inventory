@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Update your information</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/table-styling.css}" rel="stylesheet" >
+    </head>
+    <body>
+
+        <div th:replace="fragments/navigation-bar :: navigation-bar"></div>
+
+        <!-- Change profile photo form here -->
+        <div>
+            <p class="heading">Change profile photo</p>
+            <form action="#" th:action="@{/changeProfilePhoto}" method="post" enctype="multipart/form-data">
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Select file (any image format): </td>
+                            <td><input type="file" accept="image/*" id="profilePhoto" name="profilePhoto" placeholder="Upload"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Use this photo</button>
+            </form>
+        </div>
+        <hr>
+
+        <!-- Change first last name and email form here -->
+        <div>
+            <p  class="heading">Update your profile. To not change any field, leave it as is.</p>
+            <form action="#" th:action="@{/updateUserInfo}" th:object="${userEntity}" method="post">
+                <div class="table-container">
+                    <input type="hidden" th:field="${userEntity.username}">
+                    <input type="hidden" th:field="${userEntity.profile_photo}">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>First Name</td> <td><input type="text" th:field="${userEntity.firstname}" placeholder="First name"></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name</td> <td><input type="text" th:field="${userEntity.lastname}" placeholder="Last name"></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td> <td><input type="text" th:field="${userEntity.email}" placeholder="Email"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+        <hr>
+
+        <!-- Delete account form here -->
+        <div>
+            <p  class="heading">Delete account</p>
+            <p>Note that this action is irreversible!!</p>
+            <form action="#" th:action="@{/deleteUser}" method="post">
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Enter password: </td>
+                                <td><input type="password" name="password" placeholder="Password"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+        <hr>
+
+        <!-- Change username form here -->
+        <div>
+            <p  class="heading">Change Username</p>
+            <form action="#" th:action="@{/changeUsername}" th:object="${usernameChangeRequest}" method="post">
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Enter new username: </td>
+                            <td>
+                                <input type="text" th:field="${usernameChangeRequest.username}" placeholder="New Username">
+                            </td>
+                            <td>
+                                <span th:if="${#fields.hasErrors('username')}"
+                                      th:errors="*{username}"
+                                      class="error"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Enter password: </td>
+                            <td>
+                                <input type="password" th:field="${usernameChangeRequest.password}" placeholder="Password">
+                            </td>
+                            <td><span th:if="${#fields.hasErrors('password')}"
+                                      th:errors="*{password}"
+                                      class="error"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Change username</button>
+            </form>
+        </div>
+        <hr>
+
+        <!-- Change your password here
+        <div>
+            <p>Change Password</p>
+            <form action="#" th:action="@{/changeUsername}" th:object="${usernameChangeRequest}" method="post">
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>Enter new username: </td>
+                            <td>
+                                <input type="text" th:field="${usernameChangeRequest.username}" placeholder="New Username">
+                            </td>
+                            <td>
+                                <span th:if="${#fields.hasErrors('username')}"
+                                      th:errors="*{username}"
+                                      class="error"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Enter password: </td>
+                            <td>
+                                <input type="password" th:field="${usernameChangeRequest.password}" placeholder="Password">
+                            </td>
+                            <td><span th:if="${#fields.hasErrors('password')}"
+                                      th:errors="*{password}"
+                                      class="error"></span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Change username</button>
+            </form>
+        </div>
+        <hr>
+        -->
+    </body>
+</html>

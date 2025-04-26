@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Registration Confirmed</title>
+        <link type="text/css" th:href="@{/css/login_page.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+
+    </head>
+    <body>
+        <div class="form-container-container">
+            <div class="confirmation-heading">Your registration is confirmed.</div>
+            <div class="form-container">
+                <div>
+                    <div class="result-box"><span th:text="'Username is ' + ${newUser.username}"></span></div>
+                    <div class="result-box"><span th:text="'First name is ' + ${newUser.firstname}"></span></div>
+                    <div class="result-box"><span th:text="'Last name is ' + ${newUser.lastname}"></span></div>
+                    <div class="result-box"><span th:text="'Email is ' + ${newUser.email}"></span></div>
+                </div>
+                <hr>
+                <div class="role-message">
+                    <div>You are assigned the role of a student by default. To get it changed, contact the admin</div>
+                </div>
+            </div>
+            <a th:href="@{/showMyLoginPage}">Wanna login?</a>
+        </div>
+    </body>
+</html>

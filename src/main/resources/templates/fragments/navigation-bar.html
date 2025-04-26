@@ -1,0 +1,60 @@
+<div th:fragment="navigation-bar" class="navigation-bar">
+
+    <div class="profile-container">
+        <img class="profile-photo" th:src="${#authentication.principal.profile_photo}"/>
+        <div class="profile-details">
+            <p><strong>User name: </strong><span sec:authentication="principal.username"></span></p>
+            <p><strong>First name: </strong><span sec:authentication="principal.firstname"></span></p>
+            <p><strong>Last name: </strong><span sec:authentication="principal.lastname"></span></p>
+            <p><strong>Email: </strong><span sec:authentication="principal.email"></span></p>
+            <hr>
+            <p><strong>Roles :-</strong></p>
+            <p style="display: inline;" th:each="authority : ${#authentication.getAuthorities()}"
+               th:if="${authority.getAuthority().startsWith('ROLE_')}"
+               th:text="${authority.getAuthority().replaceFirst('ROLE_', '')} + ', '"></p><br>
+            <hr>
+            <a th:href="@{/profile}">Update profile</a>
+            <hr>
+            <form action="#" th:action="@{/logout}" method="post">
+                <input class="logout-button" type="submit" value="Logout" />
+            </form>
+        </div>
+
+    </div>
+    <div>
+        <form action="#" th:action="@{/searchItem}" method="post">
+            <div class="table-container">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" name="itemName" id="itemName" placeholder="Enter something">
+                            </td>
+                            <td>
+                                <select name="parameter">
+                                    <option value="Name">Name</option>
+                                    <option value="Type">Type</option>
+                                </select>
+                            </td>
+                            <td><button type="submit">Search</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+    </div>
+    <div>
+        <a th:href="@{/}">Home</a>
+
+        <a th:href="@{/seller/showAddItemForm}"
+           th:if="${#authorization.expression('hasRole(''SELLER'')')}">
+            Sell Item
+        </a>
+
+        <a th:href="@{/buyer/allOrders}"
+           th:if="${#authorization.expression('hasRole(''BUYER'')')}">
+            Your Orders
+        </a>
+    </div>
+</div>

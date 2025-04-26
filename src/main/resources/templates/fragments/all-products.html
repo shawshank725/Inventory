@@ -1,0 +1,18 @@
+<div th:fragment="allProducts">
+    <div class="container">
+        <div th:each="tempItem: ${allItems}" class="item-info">
+            <div class="image-container"><img class="item-image" th:src="${tempItem.imageURL}"></div>
+            <div>
+                <div class="item-details">
+                    <span th:text="'Name - ' + ${tempItem.itemName}"></span>
+                    <span th:text="'Quantity - ' + ${tempItem.quantity}"></span>
+                    <span th:text="'Type - ' + ${tempItem.type}"></span>
+                    <span th:text="'Price - ' + ${tempItem.price}"></span>
+                </div>
+                <div>
+                    <a th:href="@{/buyer/viewDetails(itemId=${tempItem.id})}">View details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

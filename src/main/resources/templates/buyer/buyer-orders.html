@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Your orders</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/table-styling.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/item.css}" rel="stylesheet" >
+    </head>
+    <body>
+
+        <div th:replace="fragments/navigation-bar :: navigation-bar"></div>
+
+        <div class="container">
+            <div th:each="tempOrder: ${allOrders}" class="item-info">
+                <div class="image-container"><img class="item-image" th:src="${tempOrder.item.imageURL}"></div>
+                <div>
+                    <div class="item-details">
+                        <span th:text="'Name - ' + ${tempOrder.item.itemName}"></span>
+                        <span th:text="'Type - ' + ${tempOrder.item.type}"></span>
+                        <span th:text="'Price - ' + ${tempOrder.item.price}"></span>
+                        <span th:text="'Status - ' + ${tempOrder.status}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

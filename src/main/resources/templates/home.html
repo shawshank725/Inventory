@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/table-styling.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/item.css}" rel="stylesheet" >
+
+    </head>
+    <body>
+
+        <div th:replace="fragments/navigation-bar :: navigation-bar"></div>
+
+        <div sec:authorize="hasRole('BUYER') && !(hasRole('SELLER') || hasRole('ADMIN'))">
+            <div th:replace="fragments/all-products :: allProducts"></div>
+        </div>
+
+        <div sec:authorize="hasRole('SELLER') && !(hasRole('ADMIN'))">
+            <div th:replace="fragments/seller-products :: sellerProducts"></div>
+        </div>
+
+        <div sec:authorize="hasRole('ADMIN')">
+            <div th:replace="fragments/admin-content :: adminSection"></div>
+        </div>
+    </body>
+</html>

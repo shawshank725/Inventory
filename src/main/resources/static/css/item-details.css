@@ -1,0 +1,61 @@
+/* this is the css for the details of the item opened*/
+.item-image {
+    width: 400px;
+    margin: 0%;
+}
+
+.item-name {
+    font-size: 50px;
+}
+
+.item-image-container {
+    border: solid black 5px;
+    border-radius: 10px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+
+.item-details-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* this is css for the free delivery top brand thing*/
+.other-offers {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-evenly;
+}
+.other-offers-object {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.other-images {
+    width: 50px;
+    border: solid black 2px;
+    border-radius: 30px;
+    background-color: rgb(245, 245, 245);   
+    margin-bottom: 5px; 
+}
+.other-images-text {
+    font-size: 15px;
+    margin: 0%;
+    font-weight: bold;
+    word-wrap: normal;
+    text-align: center;
+    width: 80px;
+}

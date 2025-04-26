@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Page</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/table-styling.css}" rel="stylesheet" >
+    </head>
+    <body>
+
+        <div th:replace="fragments/navigation-bar :: navigation-bar"></div>
+
+        <div>
+            <p class="heading">Update item details</p>
+            <form action="#" th:action="@{/seller/saveItem}" th:object="${itemEntity}" method="post" enctype="multipart/form-data">
+                <div class="table-container">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><input type="hidden" th:field="*{id}"></td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" th:field="*{itemName}" placeholder="Name of item"></td>
+                            <td>
+                                <span th:if="${#fields.hasErrors('itemName')}"
+                                      th:errors="*{itemName}"
+                                      class="error"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Upload Image</td>
+                            <td><input type="file" accept="image/*" id="image" name="image" placeholder="Upload"></td>
+                        </tr>
+                        <tr>
+                            <td>Type</td>
+                            <td>
+                                <select th:field="${itemEntity.type}">
+                                    <option th:each="tempCategory : ${categories}" th:value="${tempCategory}" th:text="${tempCategory}"></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quantity</td>
+                            <td><input type="number" th:field="*{quantity}" placeholder="Quantity"></td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td><input type="number" th:field="*{price}" placeholder="Price"></td>
+                        </tr>
+                        <tr>
+                            <td>Details</td>
+                            <td><input type="text" th:field="*{details}" placeholder="Details"></td>
+                            <td>
+                                <span th:if="${#fields.hasErrors('details')}"
+                                      th:errors="*{details}"
+                                      class="error"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </body>
+</html>

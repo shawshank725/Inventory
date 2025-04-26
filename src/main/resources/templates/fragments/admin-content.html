@@ -1,0 +1,30 @@
+<div th:fragment="adminSection">
+   <p>List of all people who made their account on this website</p>
+    <div class="table-container-container">
+        <div class="table-container">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Email</th>
+                    <th>Role(s)</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="tempUser: ${users}">
+                    <td th:text="${tempUser.id}"></td>
+                    <td th:text="${tempUser.username}"></td>
+                    <td th:text="${tempUser.firstname}"></td>
+                    <td th:text="${tempUser.lastname}"></td>
+                    <td th:text="${tempUser.email}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

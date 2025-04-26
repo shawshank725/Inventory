@@ -1,0 +1,114 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 2px;
+    width: fit-content ;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: rgb(168, 98, 235);
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2px;
+    font-size: large;
+}
+
+input, button {
+    display: flex;
+    border: solid black 2px;
+    border-radius: 5px;
+    padding: 2px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    height: 25px;
+    font-size: large;
+    transition: 0.4s;
+}
+
+input::placeholder {
+    text-align: center;
+}
+
+button:hover, .register-link-container:hover {
+    background-color: 	#AFE1AF;
+    cursor: pointer;
+}
+
+.message-box {
+    text-align: center;
+    background-color: #32de84;
+    color: black;
+    font-weight: bold;
+    border: solid black 2px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+hr {
+    border: solid black 1px;
+    width: 100%;
+    margin: 0px;
+}
+
+.form-container-container {
+    align-items: center;
+    justify-content: center;
+}
+
+.register-link {
+    text-decoration: none;
+    display: inline;
+    margin: 0px;
+    color: black;
+}
+
+.register-link-container {
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: solid black 2px;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.confirmation-heading {
+    text-align: center;
+    color: black;
+    font-size: 40px;
+    margin-top: 80px;
+}
+.result-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #19d842;
+    color: black;
+    font-weight: bold;
+    border: solid black 2px;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.role-message {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 150px;
+}
+
+.role-message div {
+    font-size: 10px;
+    margin: 0%;
+    word-wrap: break-word;
+    padding: 0;
+    white-space: normal;
+}

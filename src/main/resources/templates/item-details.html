@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+        <link type="text/css" th:href="@{/css/universal.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/item-details.css}" rel="stylesheet" >
+        <link type="text/css" th:href="@{/css/table-styling.css}" rel="stylesheet" >
+    </head>
+    <body>
+        <div th:replace="fragments/navigation-bar :: navigation-bar"></div>
+        <div class="item-container">
+            <div class="item-image-container"><img class="item-image" th:src="${item.imageURL}"></div>
+            <div class="item-details-container">
+                <div class="item-name"><span th:text="${item.itemName}"></span></div>
+                <hr class="horizontal">
+                <div><strong>Price -</strong> $<span th:text="${item.price}"></span></div>
+                <div><strong>Type of item -</strong> <span th:text="${item.type}"></span></div>
+                <div><strong>Name of seller - </strong><span th:text="${item.seller.firstname} + ' ' + ${item.seller.lastname}"></span></div>
+                <hr class="horizontal">
+                <div class="other-offers">
+                    <div class="other-offers-object">
+                        <img class="other-images" src="https://f.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/trust_icon_free_shipping_81px._CB562549966_.png">
+                        <p class="other-images-text">Free Delivery</p>
+                    </div>
+                    <div class="other-offers-object">
+                        <img class="other-images" src="https://f.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-returns._CB562506492_.png">
+                        <p class="other-images-text">10 days replacement</p>
+                    </div>
+                    <div class="other-offers-object">
+                        <img class="other-images" src="https://f.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/icon-top-brand._CB562506657_.png">
+                        <p class="other-images-text">Top Brand</p>
+                    </div>
+                    <div class="other-offers-object">
+                        <img class="other-images" src="https://f.media-amazon.com/images/G/31/A2I-Convert/mobile/IconFarm/Secure-payment._CB650126890_.png">
+                        <p class="other-images-text">Secure Transaction</p>
+                    </div>
+
+                </div>
+                <div>
+                    <h3>Details</h3>
+                    <br>
+                    <div>
+                        <span th:text="${item.details}"></span>
+                    </div>
+                </div>
+                <hr class="horizontal">
+                <div>
+                    <a th:href="@{/buyer/buyItem(itemId=${item.id})}">
+                        <button th:disabled="${item.quantity == 0}">Buy now!</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>
